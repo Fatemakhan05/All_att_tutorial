@@ -11,16 +11,15 @@ import LoginForm from "./components/LoginForm";
     const[blogData,setBlogData]= useState([])
     const [singlePost,setSinglePost] = useState([])
     const [postIndex,setPostIndex] = useState(0); 
+     /*
+    GET > Retrieve data
+    POST > Create data
+    PUT/PATCH > Update data
+    DELETE > delete data
+    */
 
 
-    // useEffect(()=>{
-    //   fetch('https://www.googleapis.com/blogger/v3/blogs/7194426053338090872/posts?key=AIzaSyAE1rtp1afyw84I0rtVZ6Fc280ndL60asY')
-    //   .then(res=>res.json())
-    //   .then(data=>{
-       
-    //     setBlogData(data.items)
-    //   })
-    // },[])
+     
     useEffect(()=>{
       fetch('https://www.googleapis.com/blogger/v3/blogs/7194426053338090872/posts?key=AIzaSyAE1rtp1afyw84I0rtVZ6Fc280ndL60asY')
       .then(res=>res.json())
@@ -113,6 +112,8 @@ e.preventDefault()
                 <Button onClick={nextPost}>Next Post</Button>
                 {console.log(singlePost)}
     {
+       
+      // This one for retriving post
       // blogData.map((blog,index)=>(
       //  <>
       //   <h1 key={index}>{blog.title}</h1>
