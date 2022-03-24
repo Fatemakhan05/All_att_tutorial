@@ -11,25 +11,25 @@ export default function App() {
   const [singlePost, setSinglePost] = useState({});
   useEffect(() => {
     console.log("hello");
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://jsonplaceholder.typicode.com/posts/" +indexNumber)
       .then((res) => res.json())
       .then((data) => {
         //  console.log(data)
         setPosts(data);
       })
       .catch((err) => console.log(err)); //this shows any error in your code
-  }, []);
+  }, [indexNumber]);
 
   const nextPost = (e) => {
     e.preventDefault();
     console.log(indexNumber);
     setIndexNumber(indexNumber + 1);
-    fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setSinglePost(data);
-      });
+    // fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setSinglePost(data);
+    //   });
   };
   const prevPost = (e) => {
     e.preventDefault();
@@ -38,12 +38,12 @@ export default function App() {
       alert("No post is  found");
     } else {
       setIndexNumber(indexNumber - 1);
-      fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setSinglePost(data);
-        });
+      // fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
+        // .then((res) => res.json())
+        // .then((data) => {
+        //   console.log(data);
+        //   setSinglePost(data);
+        // });
     }
   };
 
@@ -63,7 +63,7 @@ export default function App() {
       }
 
       <Container className="text-center mt-5" variant="primary" size="lg">
-        <p>{singlePost.title}</p>
+         
         <h3>Single Post title</h3>
         <Button
           variant={"warning"}
@@ -76,6 +76,7 @@ export default function App() {
         <Button variant={"warning"} onClick={nextPost} size="lg">
           Next Post
         </Button>
+        <p>{posts.title}</p>
       </Container>
     </>
   );
