@@ -15,7 +15,7 @@ export default function App() {
     console.log("This is function");
   };
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
@@ -40,17 +40,17 @@ export default function App() {
 
   return (
     <>
-      <Database.Provider value={[state, saysomthing, onlyString, posts,setSinglePost]}>
+      <Database.Provider value={[state, saysomthing, onlyString, posts,nextPost]}>
         <BrowserRouter>
           <Navbar />
-          <ul>
+          {/* <ul>
             <li>
               <Link to={"/"}>Home</Link>
             </li>
             <li>
               <Link to={"/contact"}>Contact</Link>
             </li>
-          </ul>
+          </ul> */}
           <Routes>
             <Route path="/Navbar1" element={<Navbar />} />
 

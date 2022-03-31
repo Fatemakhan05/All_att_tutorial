@@ -6,7 +6,7 @@ export default function Welcommsg({messege,color}){
     return(
         <>
         <h1 className={`bg-${color}`}>{messege}</h1>
-        {console.log(stateob,stringData,)}
+        {console.log(stateob,stringData)}
         {stringData}
         
         
