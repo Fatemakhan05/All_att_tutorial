@@ -1,4 +1,5 @@
 import "./App.css";
+ 
 
 import { useEffect, useState } from "react";
 import { Container, Button } from "react-bootstrap";
@@ -10,8 +11,8 @@ export default function App() {
   const [indexNumber, setIndexNumber] = useState(1);
   const [singlePost, setSinglePost] = useState({});
   useEffect(() => {
-    console.log("hello");
-    fetch("https://jsonplaceholder.typicode.com/posts/" +indexNumber)
+    // console.log("hello");
+    fetch("https://jsonplaceholder.typicode.com/posts/" +indexNumber )
       .then((res) => res.json())
       .then((data) => {
         //  console.log(data)
@@ -19,18 +20,36 @@ export default function App() {
       })
       .catch((err) => console.log(err)); //this shows any error in your code
   }, [indexNumber]);
+  const deletePost =(e)=>{
+    e.preventDefault();
+    if (indexNumber<=0){
+          alert('No post to delete')
+    }else{
+      setIndexNumber(indexNumber-indexNumber)
+    }
+     
+  }
+  const addPost=(e)=>{
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then((response)=>response.json())
+    .then((json)=>console.log(json));
+  }
 
   const nextPost = (e) => {
     e.preventDefault();
-    console.log(indexNumber);
+     console.log(indexNumber);
     setIndexNumber(indexNumber + 1);
-    // fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setSinglePost(data);
-    //   });
+     fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
+       .then((res) => res.json())
+      .then((data) => {
+        // console.log(indexNumber);
+        setSinglePost(data);
+        console.log(data)
+       });
+    
+    
   };
+ 
   const prevPost = (e) => {
     e.preventDefault();
 
@@ -38,14 +57,16 @@ export default function App() {
       alert("No post is  found");
     } else {
       setIndexNumber(indexNumber - 1);
-      // fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
-        // .then((res) => res.json())
-        // .then((data) => {
-        //   console.log(data);
-        //   setSinglePost(data);
-        // });
+       fetch(`https://jsonplaceholder.typicode.com/posts/${indexNumber}`)
+         .then((res) => res.json())
+        .then((data) => {
+          //  console.log(indexNumber);
+           setSinglePost(data);
+           console.log(data)
+         });
     }
   };
+  
 
   return (
     <>
@@ -62,9 +83,10 @@ export default function App() {
         // ))
       }
 
-      <Container className="text-center mt-5" variant="primary" size="lg">
+      <Container className="text-center mt-5"  variant="primary" size="lg">
          
-        <h3>Single Post title</h3>
+       <div data-aos='fade-right'>  <h3 className="sp" >Single Post title</h3></div>
+       
         <Button
           variant={"warning"}
           onClick={prevPost}
@@ -73,10 +95,11 @@ export default function App() {
         >
           Prevous Button
         </Button>
-        <Button variant={"warning"} onClick={nextPost} size="lg">
+        <Button variant={"warning"}  onClick={nextPost} size="lg">
           Next Post
         </Button>
         <p>{posts.title}</p>
+         {/* <Button onClick={addPost}>add</Button>  */}
       </Container>
     </>
   );
