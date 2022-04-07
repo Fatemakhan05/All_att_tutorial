@@ -1,0 +1,20 @@
+{
+  "name": "tutorial7",
+  "version": "1.0.0",
+  "description": "",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx parcel index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.4.1",
+    "process": "^0.11.10"
+  }
+}
