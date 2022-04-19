@@ -1,0 +1,6 @@
+make new folder
+cd folder 
+step2 npm in it -y it skip all questions
+nom i express body-parser cors 
+step 3 create index.js or app.js 
+now read to program
